@@ -1,16 +1,32 @@
-# This is a sample Python script.
+import heapq as hq
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+start = (1,2,3,0,4,6,7,5,8)
+goal = (1,2,3,4,5,6,7,8,0)
 
+h = 0
+g = 0
+f = 0
+for i in range(0,len(start)):
+    if start[i] == 0:
+        continue
+    if not start[i] == goal[i]:
+        h = h + 1
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+print (h)
+f = h + g
 
+open_list = []
+start_paket = (f, g, start)
+hq.heappush(open_list, start_paket)
+print("Offene Liste:", open_list)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+aktuelles_f, aktuelles_g, aktuelles_brett = hq.heappop(open_list)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print("Bestes f:", aktuelles_f)
+print("Spielfeld dazu:", aktuelles_brett)
+
+for i in range(0,len(aktuelles_brett)):
+    if aktuelles_brett[i] == 0:
+        index0 = i
+
+for i in range(0,len(aktuelles_brett)):
