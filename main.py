@@ -20,13 +20,33 @@ start_paket = (f, g, start)
 hq.heappush(open_list, start_paket)
 print("Offene Liste:", open_list)
 
-aktuelles_f, aktuelles_g, aktuelles_brett = hq.heappop(open_list)
+test = []
 
-print("Bestes f:", aktuelles_f)
-print("Spielfeld dazu:", aktuelles_brett)
+while open_list:
 
-for i in range(0,len(aktuelles_brett)):
-    if aktuelles_brett[i] == 0:
-        index0 = i
+    aktuelles_f, aktuelles_g, aktuelles_brett = hq.heappop(open_list)
 
-for i in range(0,len(aktuelles_brett)):
+    # Ziel erreicht?
+    if aktuelles_brett == goal:
+        print("Ziel erreicht")
+        print("g:", aktuelles_g)
+        break
+
+    #0 finden
+    for i in range(0, len(aktuelles_brett)):
+        if aktuelles_brett[i] == 0:
+            index0 = i
+
+    test = []
+
+    if index0 >= 3:
+        test.append(index0 - 3)
+
+    if index0 < 6:
+        test.append(index0 + 3)
+
+    if index0 % 3 != 2:
+        test.append(index0 + 1)
+
+    if index0 % 3 != 0:
+        test.append(index0 - 1)
