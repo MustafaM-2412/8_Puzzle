@@ -17,7 +17,9 @@ def a_star(start, goal, algo) -> dict:
 
     while open_list:
         aktuelles_f, aktuelles_g, aktuelles_brett = hq.heappop(open_list)
-        if aktuelles_f in closed_list:
+
+        #bugfix: aktuelles_f -> aktuelles_brett
+        if aktuelles_brett in closed_list:
             continue
         closed_list.add(aktuelles_brett)
 
